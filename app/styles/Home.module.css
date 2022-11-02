@@ -1,15 +1,53 @@
 .youtube{
   position: relative;
-  width: 100%;
-  overflow: hidden;
   padding-bottom: 56.25%;
+  /* padding-top: 5%; */
+  /* padding-bottom: 70%; */
+
+
+  /* height: 0; */
+  overflow: hidden;
+  text-align: center;
 }
 
 .youtube iframe{
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none; /*境界線の打ち消し*/
+  bottom: 10%;
+  width: 80%;
+  height: 80%;
+  top: 4%;
+  /* margin-top: -%; */
+  margin-left: -40%;
+  /* margin: 0 auto; */
+
+  /* border: none;  */
+  max-width: 100%;
+}
+
+.buttonStyle{
+
+  text-align: center;
+}
+
+.buttonStyle button{
+  font-size: 18px;
+  color: white;
+  background-color: red;
+  border: none;
+  margin: 0 auto;
+  width: 150px;
+  height: 50px;
+  border-radius: 12px;
+  transition: .1s;
+  cursor: pointer;
+
+}
+
+.buttonStyle button:hover {
+  opacity: 0.3;
+}
+
+.title{
+  text-align: center;
+  color: white;
 }
