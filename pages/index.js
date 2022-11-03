@@ -17,7 +17,7 @@ export default function Home({videoObj}) {
     </div>
 
     <div className={styles.youtube}> 
-      <iframe src={src} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+      <iframe src={src} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
     </div>
 
 
