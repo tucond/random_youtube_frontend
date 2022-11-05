@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { TwitterShareButton, LineShareButton, TwitterIcon, LineIcon } from "react-share";
 
 
 export default function Home({videoObj}) {
 
-  let src = "https://www.youtube.com/embed/" + videoObj.videoId + "?" + "autoplay=1" + "&" + "mute=1";
-  console.log(src)
+  let srcUrl = "https://www.youtube.com/embed/" + videoObj.videoId + "?" + "autoplay=1" + "&" + "mute=1";
+  let shareUrl = "https://youtu.be/" + videoObj.videoId
   return (
 
     <>
@@ -15,11 +16,23 @@ export default function Home({videoObj}) {
       </header>
 
       <div className={styles.youtube}> 
-        <iframe src={src} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <iframe src={srcUrl} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       </div>
 
       <div className={styles.buttonStyle}>
           <button onClick={()=>location.reload()}>REGENERATE</button>
+      </div>
+
+      <div className={styles.share}>
+        {/* Share this page */}
+        <br/>
+        <TwitterShareButton url={shareUrl} title="ページタイトル">
+          <TwitterIcon size={45} round={true} />
+        </TwitterShareButton>
+
+        <LineShareButton url={shareUrl} title="ページタイトル"> 
+          <LineIcon size={45} round />
+        </LineShareButton>
       </div>
     </>
   )

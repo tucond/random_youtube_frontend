@@ -2,9 +2,10 @@
 .youtube{
   position: relative;
   padding-bottom: 56.25%;
+  /* padding-bottom: 100%; */
   
-  /* padding-top: 10%; */
-  /* padding-bottom: 70%; */
+  /* padding-top: 56.25%;  */
+  /* /* padding-bottom: 70%; */
 
   /* height: 0; */
   overflow: hidden;
@@ -17,8 +18,10 @@
   width: 80%;
   height: 80%;
   /* top: 4%; */
-  margin-top: 5%;
+  margin-top: 0%;
   margin-left: -40%;
+  /* margin-bottom: -40%; */
+
   /* margin: 0 auto; */
 
   /* border: none;  */
@@ -29,9 +32,12 @@
 .buttonStyle{
 
   text-align: center;
+  margin-top: -10%;
+
 }
 
 .buttonStyle button{
+
   font-size: 18px;
   color: white;
   background-color: red;
@@ -50,6 +56,11 @@
 }
 
 .title{
+  text-align: center;
+  color: white;
+}
+
+.share{
   text-align: center;
   color: white;
 }
