@@ -10,17 +10,17 @@ export default function Home({videoObj}) {
   return (
 
     <>
-    <h1 className={styles.title}>Random YouTube Player</h1>
-    
-    <div className={styles.buttonStyle}>
-      <button onClick={()=>location.reload()}>REGENERATE</button>
-    </div>
+      <header>
+        <h1 className={styles.title}>Random YouTube Player</h1>
+      </header>
 
-    <div className={styles.youtube}> 
-      <iframe src={src} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-    </div>
+      <div className={styles.youtube}> 
+        <iframe src={src} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+      </div>
 
-
+      <div className={styles.buttonStyle}>
+          <button onClick={()=>location.reload()}>REGENERATE</button>
+      </div>
     </>
   )
 }
