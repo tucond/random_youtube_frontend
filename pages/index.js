@@ -26,11 +26,11 @@ export default function Home({videoObj}) {
       <div className={styles.share}>
         {/* Share this page */}
         <br/>
-        <TwitterShareButton url={shareUrl} title="ページタイトル">
+        <TwitterShareButton url={shareUrl} title={videoObj.title}>
           <TwitterIcon size={45} round={true} />
         </TwitterShareButton>
 
-        <LineShareButton url={shareUrl} title="ページタイトル"> 
+        <LineShareButton url={shareUrl} quote={videoObj.title}> 
           <LineIcon size={45} round />
         </LineShareButton>
       </div>
@@ -45,10 +45,10 @@ Home.getInitialProps = async function(){
     method: "GET",
   });
 
-  const videoId = await res.json();
+  const videoData = await res.json();
 
   return {
-    videoObj: videoId
+    videoObj: videoData
   };  
        
 }   

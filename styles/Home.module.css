@@ -10,6 +10,8 @@
   /* height: 0; */
   overflow: hidden;
   text-align: center;
+  z-index: 1; 
+
 }
 
 .youtube iframe{
@@ -26,18 +28,21 @@
 
   /* border: none;  */
   max-width: 100%;
+  z-index: 1; 
+
 
 }
 
 .buttonStyle{
 
-  text-align: center;
   margin-top: -10%;
+  z-index: 100; 
+  text-align: center;
 
 }
 
 .buttonStyle button{
-
+  position: relative;
   font-size: 18px;
   color: white;
   background-color: red;
@@ -48,6 +53,7 @@
   border-radius: 12px;
   transition: .1s;
   cursor: pointer;
+  z-index: 100; 
 
 }
 
@@ -61,8 +67,11 @@
 }
 
 .share{
+  position: relative;
   text-align: center;
   color: white;
+  z-index: 100; 
+
 }
 
 @media screen and (max-width:480px) {
