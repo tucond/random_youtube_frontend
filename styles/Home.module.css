@@ -35,7 +35,7 @@
 
 .buttonStyle{
 
-  margin-top: -10%;
+  margin-top: 1%;
   z-index: 100; 
   text-align: center;
 
@@ -66,7 +66,21 @@
   color: white;
 }
 
+.inputStyle{
+  position: relative;
+  margin-top: -10%;
+  z-index: 100; 
+  text-align: center;
+  color: white;
+}
+
+.inputStyle input{
+  width: 30%;
+  font-size: 18px;
+}
+
 .share{
+  margin-top: 3%;
   position: relative;
   text-align: center;
   color: white;

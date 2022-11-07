@@ -2,9 +2,29 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { TwitterShareButton, LineShareButton, TwitterIcon, LineIcon } from "react-share";
+import axios from "axios";
+import {useState} from "react"
+// import { TextField } from '@material-ui/core';
 
 
 export default function Home({videoObj}) {
+
+  const [searchText, setSearchText] = useState('');
+  const  onClickGenerate = () => {
+
+    axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/youtube_api/get`, {
+      searchText: searchText
+    })
+    .then((res) => {
+      setSearchText(res.data.videoObj.serchText);
+    })
+    .catch(() =>{
+      console.log("Not Post")
+      location.reload()
+    })
+  }
+
+
 
   let srcUrl = "https://www.youtube.com/embed/" + videoObj.videoId + "?" + "autoplay=1" + "&" + "mute=1";
   let shareUrl = "https://youtu.be/" + videoObj.videoId
@@ -19,8 +39,13 @@ export default function Home({videoObj}) {
         <iframe src={srcUrl} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       </div>
 
+      <div className={styles.inputStyle}>
+        {/* <p>You can play a video randomly with any keywords</p> */}
+        <input placeholder={"With keywords"} onChange={(e) => setSearchText(e.target.value)} />
+      </div>
+
       <div className={styles.buttonStyle}>
-          <button onClick={()=>location.reload()}>REGENERATE</button>
+          <button onClick={onClickGenerate}>GENERATE</button>
       </div>
 
       <div className={styles.share}>
