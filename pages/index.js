@@ -6,27 +6,28 @@ import axios from "axios";
 import {useState} from "react"
 // import { TextField } from '@material-ui/core';
 
-
 export default function Home({videoObj}) {
 
-  const [searchText, setSearchText] = useState('');
-  const  onClickGenerate = () => {
+  let firstUrl = `https://www.youtube.com/embed/${videoObj.videoId}?autoplay=1&mute=1` //TODO:url作成するUtilityを作る
 
-    axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/youtube_api/get`, {
-      searchText: searchText
-    })
-    .then((res) => {
-      setSearchText(res.data.videoObj.serchText);
-    })
-    .catch(() =>{
-      console.log("Not Post")
-      location.reload()
-    })
+  const [searchedVideoUrl, setSearchedVideoUrl] = useState(firstUrl);
+  const [searchText, setSearchText] = useState('');
+
+  const  onClickGenerate = async() => {
+
+    let searchUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/youtube_api/${searchText}`//TODO:パラメータで渡す
+    await axios.get(searchUrl)
+  
+   .then((res) => {
+     setSearchedVideoUrl(`https://www.youtube.com/embed/${res.data.videoId}?autoplay=1&mute=1`)
+    
+   })
+   .catch(() =>{
+     alert(`Sorry, I couldn't find a video with the word: ${searchText}`)
+   })
   }
 
 
-
-  let srcUrl = "https://www.youtube.com/embed/" + videoObj.videoId + "?" + "autoplay=1" + "&" + "mute=1";
   let shareUrl = "https://youtu.be/" + videoObj.videoId
   return (
 
@@ -36,12 +37,11 @@ export default function Home({videoObj}) {
       </header>
 
       <div className={styles.youtube}> 
-        <iframe src={srcUrl} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        <iframe src={searchedVideoUrl} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       </div>
 
       <div className={styles.inputStyle}>
-        {/* <p>You can play a video randomly with any keywords</p> */}
-        <input placeholder={"With keywords"} onChange={(e) => setSearchText(e.target.value)} />
+        <input placeholder={"With word"} onChange={(e) => setSearchText(e.target.value)} />
       </div>
 
       <div className={styles.buttonStyle}>
@@ -49,7 +49,6 @@ export default function Home({videoObj}) {
       </div>
 
       <div className={styles.share}>
-        {/* Share this page */}
         <br/>
         <TwitterShareButton url={shareUrl} title={videoObj.title}>
           <TwitterIcon size={45} round={true} />
