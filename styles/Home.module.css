@@ -104,8 +104,16 @@
   }
 
   .buttonStyle{
-    margin-top: 10%;
+    margin-top: 5%;
     
+  }
+  .inputStyle{
+    
+    margin-top: 5%;
+  }
+
+  .inputStyle input{
+    width: 50%;
   }
  
 }
