@@ -9,8 +9,12 @@ import {useState} from "react"
 export default function Home({videoObj}) {
 
   let firstUrl = `https://www.youtube.com/embed/${videoObj.videoId}?autoplay=1&mute=1` //TODO:url作成するUtilityを作る
+  let firstShareUrl = "https://youtu.be/" + videoObj.videoId
+  let firstShareTitle = videoObj.title
 
   const [searchedVideoUrl, setSearchedVideoUrl] = useState(firstUrl);
+  const [shareVideoUrl, setShareVideoUrl] = useState(firstShareUrl);
+  const [shareVideoTitle, setShareVideoTitle] = useState(firstShareTitle);
   const [searchText, setSearchText] = useState('');
 
   const  onClickGenerate = async() => {
@@ -20,6 +24,8 @@ export default function Home({videoObj}) {
   
    .then((res) => {
      setSearchedVideoUrl(`https://www.youtube.com/embed/${res.data.videoId}?autoplay=1&mute=1`)
+     setShareVideoUrl(`https://youtu.be/${res.data.videoId}`)
+     setShareVideoTitle(res.data.title)
     
    })
    .catch(() =>{
@@ -28,7 +34,6 @@ export default function Home({videoObj}) {
   }
 
 
-  let shareUrl = "https://youtu.be/" + videoObj.videoId
   return (
 
     <>
@@ -50,11 +55,11 @@ export default function Home({videoObj}) {
 
       <div className={styles.share}>
         <br/>
-        <TwitterShareButton url={shareUrl} title={videoObj.title}>
+        <TwitterShareButton url={shareVideoUrl} title={shareVideoTitle}>
           <TwitterIcon size={45} round={true} />
         </TwitterShareButton>
 
-        <LineShareButton url={shareUrl} quote={videoObj.title}> 
+        <LineShareButton url={shareVideoUrl} title={shareVideoTitle}> 
           <LineIcon size={45} round />
         </LineShareButton>
       </div>
