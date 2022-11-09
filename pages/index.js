@@ -19,7 +19,7 @@ export default function Home({videoObj}) {
 
   const  onClickGenerate = async() => {
 
-    let searchUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/youtube_api/${searchText}`//TODO:パラメータで渡す
+    let searchUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/youtube_api/results?search_query=${searchText}`
     await axios.get(searchUrl)
   
    .then((res) => {
@@ -70,7 +70,7 @@ export default function Home({videoObj}) {
 Home.getInitialProps = async function(){
   //console.log(process.env.NEXT_PUBLIC_BACKEND_URL)
   const res = await fetch
-  (`${process.env.NEXT_PUBLIC_BACKEND_URL}/youtube_api/new`, {
+  (`${process.env.NEXT_PUBLIC_BACKEND_URL}/youtube_api/results?search_query=`, {
     method: "GET",
   });
 
